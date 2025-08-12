@@ -1,0 +1,37 @@
+\doublespacing % Do not change - required
+
+\chapter{Simulations, Results and Discussion}
+\label{ch5}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% IMPORTANT
+\begin{spacing}{1} %THESE FOUR
+\minitoc % LINES MUST APPEAR IN
+\end{spacing} % EVERY
+\thesisspacing % CHAPTER
+% COPY THEM IN ANY NEW CHAPTER
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Present experimental results, data analysis, and performance evaluation}
+As mentioned before, the system is designed and simulated in the Factory IO environment. Since the program is a simulation of a factory environment, it cannot be expected to be fully compatible with the real world. Due to modeling errors and simulation errors, the system cannot be expected to work at an optimal level.
+
+A part and cover clamping project coded with PLC and implemented in the simulation environment works successfully in the simulation. From time to time, due to programmatic errors or sensor detection programs, it has been observed that although the parts are programmed to be the same size and their midpoints overlap, the midpoints do not overlap and different parts are clamped.
+
+It has been determined that the encoders planned to be used for the determination of energy-related quantities such as speed and position of the system are not available in the simulation environment. The main reason here is thought to be that the program cannot reach the high-frequency data processing capacity of the encoders. At this point, the possibility of slowing down the system speed and programming a manual encoder or using a different tool for simulation is considered in future studies.
+
+After the energy-related components of the motors are obtained, it is thought that the simulation can be performed by replacing the parameters in the currently ready DC motor model. Then, it is thought that a PID block design will be made in the Matlab software with the obtained data and then the coefficients found will be transferred to the program with the PID block in the PLC.
+
+In this way, the optimization of the system's energy saving will be provided by working together with many programs on energy-consuming motors.
+\medskip
+
+\section{Compare results with existing approaches}
+In our study, the system architecture is based on a PLC-based structure, and energy consumption is monitored in real time; data processing is performed with PLC and a virtual modeling of physical systems is provided using Factory IO software. In this structure, control and monitoring operations are carried out directly through the interaction between PLC and Factory IO. Within the scope of the software platform, PID control applications are implemented for users and data visualization is provided. In the "Development of a Real-Time Energy Monitoring Platform" study, data is received from the energy analyzer using the RS485 communication protocol and a basic level graphical data monitoring service is offered to the user via an interface developed with the DELPHI language; there is no virtual modeling or simulation integration in this project. In the "Industrial IoT-Based Energy Monitoring System Using Data Processing at Edge" study, the system architecture is based on the edge computing approach, data is collected on a local server and analyzed via a JavaScript-based data processing engine and presented to the user with an advanced dashboard interface; in addition, automatic e-mail notification mechanisms are also included in the system. However, there is no simulation or modeling infrastructure representing the physical process in this study. In this context, although the studies examined aim to monitor energy, they show significant differences in terms of system architectures, data processing methods and software platforms.
+\medskip
+
+\section{Discuss key findings and their implications}
+The important negative finding, as mentioned before, is the difficulty in transferring data to the PLC due to the encoder problem in the simulation program. Although other processes were ready, the energy-based control of the system could not be performed due to this problem.
+
+The important positive findings are that industrial processes can be successfully performed in the simulation environment. Conversely, it is highly probable that the processes implemented in the simulation environment can also be performed in the real world. If this is done, sensor problems can also be prevented.
+\medskip
+
+\clearpage

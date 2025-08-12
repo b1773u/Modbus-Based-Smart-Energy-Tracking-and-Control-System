@@ -1,0 +1,70 @@
+\contentsline {xchapter}{}{i}{section*.2}%
+\contentsline {xchapter}{}{iii}{section*.4}%
+\contentsline {xchapter}{}{v}{section*.6}%
+\contentsline {xchapter}{}{vii}{section*.8}%
+\contentsline {xchapter}{}{ix}{section*.10}%
+\contentsline {xchapter}{}{xiii}{section*.13}%
+\contentsline {xchapter}{}{xv}{section*.15}%
+\contentsline {xchapter}{}{xvii}{section*.17}%
+\contentsline {xchapter}{}{xix}{section*.19}%
+\addvspace {10\p@ }
+\contentsline {xchapter}{Introduction}{1}{chapter.1}%
+\addvspace {10\p@ }
+\contentsline {xchapter}{Literature Review}{7}{chapter.2}%
+\addvspace {10\p@ }
+\contentsline {xchapter}{ Methodology}{9}{chapter.3}%
+\addvspace {10\p@ }
+\contentsline {xchapter}{Implementation}{11}{chapter.4}%
+\contentsline {figure}{\numberline {4.1}{\ignorespaces \xpg@aux {}{english}e6b2-c Encoder}}{12}{figure.4.1}%
+\contentsline {figure}{\numberline {4.2}{\ignorespaces \xpg@aux {}{english}S7-1200 PLC}}{13}{figure.4.2}%
+\contentsline {figure}{\numberline {4.3}{\ignorespaces \xpg@aux {}{english}Factory IO starting environment}}{16}{figure.4.3}%
+\contentsline {figure}{\numberline {4.4}{\ignorespaces \xpg@aux {}{english}Front view of the created system}}{17}{figure.4.4}%
+\contentsline {figure}{\numberline {4.5}{\ignorespaces \xpg@aux {}{english}Right view of the created system}}{17}{figure.4.5}%
+\contentsline {figure}{\numberline {4.6}{\ignorespaces \xpg@aux {}{english}Left view of the created system}}{18}{figure.4.6}%
+\contentsline {figure}{\numberline {4.7}{\ignorespaces \xpg@aux {}{english}Board with buttons}}{19}{figure.4.7}%
+\contentsline {figure}{\numberline {4.8}{\ignorespaces \xpg@aux {}{english}Creating parts and covers}}{19}{figure.4.8}%
+\contentsline {figure}{\numberline {4.9}{\ignorespaces \xpg@aux {}{english}Robot arm moves the cover to the body}}{20}{figure.4.9}%
+\contentsline {figure}{\numberline {4.10}{\ignorespaces \xpg@aux {}{english}After the blades are opened, the produced part moves forward on the conveyor.}}{20}{figure.4.10}%
+\contentsline {figure}{\numberline {4.11}{\ignorespaces \xpg@aux {}{english}The manufactured part completes the conveyor and reaches the final stage.}}{21}{figure.4.11}%
+\contentsline {figure}{\numberline {4.12}{\ignorespaces \xpg@aux {}{english}S7-1200 PLCSim driver settings}}{21}{figure.4.12}%
+\addvspace {10\p@ }
+\contentsline {xchapter}{Simulations, Results and Discussion}{25}{chapter.5}%
+\addvspace {10\p@ }
+\contentsline {xchapter}{Conclusion and Future Work}{27}{chapter.6}%
+\contentsline {xchapter}{}{29}{section*.21}%
+\contentsline {xchapter}{}{33}{section*.23}%
+\contentsline {xchapter}{}{35}{section*.25}%
+\addvspace {10\p@ }
+\contentsline {xchapter}{TIA Portal Program}{39}{appendix.A}%
+\contentsline {figure}{\numberline {A.1}{\ignorespaces \xpg@aux {}{english}First four lines of the program}}{40}{figure.A.1}%
+\contentsline {figure}{\numberline {A.2}{\ignorespaces \xpg@aux {}{english}Last 3 lines of the program}}{40}{figure.A.2}%
+\contentsline {figure}{\numberline {A.3}{\ignorespaces \xpg@aux {}{english}Function block 0}}{41}{figure.A.3}%
+\contentsline {figure}{\numberline {A.4}{\ignorespaces \xpg@aux {}{english}Function block 1}}{42}{figure.A.4}%
+\contentsline {figure}{\numberline {A.5}{\ignorespaces \xpg@aux {}{english}Function block 2}}{42}{figure.A.5}%
+\contentsline {figure}{\numberline {A.6}{\ignorespaces \xpg@aux {}{english}Function blok 3 Network1}}{43}{figure.A.6}%
+\contentsline {figure}{\numberline {A.7}{\ignorespaces \xpg@aux {}{english}Function blok 3 Network2}}{43}{figure.A.7}%
+\contentsline {figure}{\numberline {A.8}{\ignorespaces \xpg@aux {}{english}Function block 3 Network3 and Network4}}{43}{figure.A.8}%
+\contentsline {figure}{\numberline {A.9}{\ignorespaces \xpg@aux {}{english}Function blok 4 Network1 and Network2}}{44}{figure.A.9}%
+\contentsline {figure}{\numberline {A.10}{\ignorespaces \xpg@aux {}{english}Function blok 4 Network3}}{44}{figure.A.10}%
+\contentsline {figure}{\numberline {A.11}{\ignorespaces \xpg@aux {}{english}Function block 5 Network1 to Network3}}{44}{figure.A.11}%
+\contentsline {figure}{\numberline {A.12}{\ignorespaces \xpg@aux {}{english}Function block 5 Network4 and Network5}}{45}{figure.A.12}%
+\contentsline {figure}{\numberline {A.13}{\ignorespaces \xpg@aux {}{english}Function block 6}}{45}{figure.A.13}%
+\addvspace {10\p@ }
+\contentsline {xchapter}{DC Motor Matlab Modeling}{47}{appendix.B}%
+\contentsline {figure}{\numberline {B.1}{\ignorespaces \xpg@aux {}{english}Simulink model of the DC motor}}{47}{figure.B.1}%
+\contentsline {figure}{\numberline {B.2}{\ignorespaces \xpg@aux {}{english}Inside of the DC motor}}{48}{figure.B.2}%
+\contentsline {figure}{\numberline {B.3}{\ignorespaces \xpg@aux {}{english}Current-time graph}}{48}{figure.B.3}%
+\contentsline {figure}{\numberline {B.4}{\ignorespaces \xpg@aux {}{english}Torque-time graph}}{49}{figure.B.4}%
+\contentsline {figure}{\numberline {B.5}{\ignorespaces \xpg@aux {}{english}Counter torque-time graph}}{49}{figure.B.5}%
+\contentsline {figure}{\numberline {B.6}{\ignorespaces \xpg@aux {}{english}Angular velocity-time graph}}{50}{figure.B.6}%
+\contentsline {figure}{\numberline {B.7}{\ignorespaces \xpg@aux {}{english}Motor angle-time graph}}{50}{figure.B.7}%
+\contentsline {figure}{\numberline {B.8}{\ignorespaces \xpg@aux {}{english}load speed-time graph}}{51}{figure.B.8}%
+\contentsline {figure}{\numberline {B.9}{\ignorespaces \xpg@aux {}{english}load angular position-time graph}}{51}{figure.B.9}%
+\contentsline {figure}{\numberline {B.10}{\ignorespaces \xpg@aux {}{english}DC motor voltage-time graph}}{52}{figure.B.10}%
+\contentsline {figure}{\numberline {B.11}{\ignorespaces \xpg@aux {}{english}Motor power-time graph}}{52}{figure.B.11}%
+\contentsline {figure}{\numberline {B.12}{\ignorespaces \xpg@aux {}{english}Output power-time graph}}{53}{figure.B.12}%
+\contentsline {figure}{\numberline {B.13}{\ignorespaces \xpg@aux {}{english}Energy consumtion-time graph}}{53}{figure.B.13}%
+\contentsline {figure}{\numberline {B.14}{\ignorespaces \xpg@aux {}{english}Efficiency-time graph}}{54}{figure.B.14}%
+\contentsline {xchapter}{}{55}{section*.27}%
+\contentsline {xchapter}{}{57}{section*.29}%
+\contentsline {xchapter}{}{59}{section*.31}%

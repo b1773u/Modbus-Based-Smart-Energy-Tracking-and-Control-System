@@ -1,0 +1,186 @@
+% Template for BSc final reports
+% CAE Department - Istanbul Technical University
+%
+% INSTRUCTIONS
+% (1) Compile using LuaLatex (it is the successor of pdflatex). To check this on Overleaf, click on the Menu on the top left.
+% (2) Complete the SETUP below
+% (3) Students of Istanbul Technical University can claim a free premium Overleaf account, please check
+% Claim the free premium account because as your report becomes more and more complex, you may reach the timeout limit of the free account.
+% Alternatively you may setup LateX compiler in your machine and use GitHub or similar environments for teamwork.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% DO NOT MODIFY FROM HERE ...
+\documentclass[10pt]{itu_cae_dissertation}
+
+\usepackage[style=ieee,backend=biber,hyperref=auto]{biblatex}
+\addbibresource{references.bib}
+
+
+
+% ... TO HERE
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%% SETUP %%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% EDIT THE FOLLOWING INFORMATION WITH YOUR DATA
+% IF YOU ARE DOING AN MSC IGNORE PART B
+% LINES STARTING WITH % ARE COMMENTS. UNCOMMENT JUST ONE OF A SET OF OPTIONS
+% MAKE SURE YOU CHECK AND UPDATE ALL INFORMATION, INCLUDING SUBMITYEAR
+
+
+%%%%%%%%%%% PART A %%%%%%%%%%%
+% PICK A DEGREE FROM THE LIST BELOW 
+% BY COMMENTING OUT/IN YOUR DEGREE
+% DO NOT MODIFY THE NAMES
+%\degree{MEng}
+\degree{BEng}
+%\degree{MSc}
+
+\title{Modbus Based Smart Energy Tracking and Control and System}
+\subtitle{} % use \subtitle{} to remove the subtitle
+\lecture{KON 4902 Control $\&$ Automation Engineering Design II}
+\author{Kürşat Döşkaya \\ Kenan Selçuk \\ Burak Uğur}
+\sid{040200512, 040200509, 040170140} % Fill your student ID to here
+\supervisor{Dr. Onur Akbatı} 
+\submityear{2025}
+
+
+
+% PICK A COURSE FROM THE LIST BELOW 
+% DO NOT MODIFY THE NAMES
+\course{Control $\&$ Automation Engineering}
+%\course{Robotics $\&$ Autonomous Systems Engineering}
+
+
+
+% Do you want a list of figures?
+% Do you want a list of tables?
+% Do you want an acknowledgement page?
+% Do you want a list of acronyms?
+\setboolean{list_of_figures}{true} % false or true - Default is true
+\setboolean{list_of_tables}{true} % false or true - Default is false
+\setboolean{acknowledgement}{false} % false or true - Default is true
+\setboolean{acronyms}{true} % false or true - Default is true
+\setboolean{symbols}{true} % false or true - Default is true
+
+% If you want to print your thesis, consider changing the command below to true. If true, the command adds labels at the edge of the pages which will make easy to identify a chapter running through the pages with the finger. It is just a visual setting. The default values are different for MENG/BEng and MSc as a consequence of the different approval process. In any case, you can change this to either true or false as you prefer.
+
+\setboolean{edge_labels}{true} % default is true 
+
+%The preferred spacing for FYP/MSc reports is doublespacing. This is because it is easier for markers to annotate the document while marking. Some students require the implementation of the singlespacing option. This can be activated below by changing from true to false, but discuss this with your supervisor first.
+\setboolean{double_spacing}{true} %Default is true. If you want to change this, ask your supervisor if they are OK with singlespacing.
+
+%%%%%%%%%%% PART B %%%%%%%%%%% 
+% Is this an interim report or final report?
+\setboolean{final_thesis}{true} % true for final Thesis / false for interim report
+%\secondmarker{Second Marker\\[2mm]{\large \textsc Dr Jane Doe}} %If you do not know who your second marker is, use \secondmarker{}
+
+%%%%%%%%%%%%% END SETUP %%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+% ADDITIONAL PACKAGES
+% You can add your packages below. Note that the following packages are already loaded: pgfcore, geometry, bookmark, graphicx, setspace, kantlipsum, fontspec, polygrossia (default English), minitoc, silence, background, xpatch, tikzpagenodes, totcount, fancyhdr, titlesec and the tikz libraries calc, shapes.symbols and shapes.misc  
+
+%Examples
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{siunitx}
+\usepackage{listings}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric, arrows}
+\usepackage{adjustbox}
+\usepackage{geometry}
+\geometry{a4paper, margin=1in}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{fontspec}
+\usepackage{titlesec}
+\usepackage{float}
+
+
+%...
+
+% ADDITIONAL COMMANDS
+%Examples
+\DeclareMathOperator{\diag}{diag}
+\DeclareMathOperator{\vect}{vec}
+%...
+
+
+\begin{document}
+
+\preamble % Do not change - required
+
+% EDIT THE CONTENT OF THE FILES
+% Abstract.tex
+% OrigSta_Copyright.tex
+% Acknowledgement.tex
+% You can find them under the folder 
+% "chapters" on the left column
+
+% ADD AS MANY CHAPTERS AS NEEDED
+% BY CREATING .TEX FILES IN THE FOLDER chapters
+% AND ADDING \input{namechapter.tex} BELOW
+\input{Chapter1.tex}
+\input{Chapter2.tex}
+\input{Chapter3.tex}
+\input{Chapter4.tex}
+\input{Chapter5.tex}
+\input{Chapter6.tex}
+
+%\input{chapters/ChapterHowTO}
+% You can change the title of the conclusions by changing the text between { }
+%\conclusions{Conclusions and future directions} % Do not remove - required
+
+\EthicalRulesComplianceStatement{Ethical Rules Compliance Statement} % If you need a label for this chapter
+
+\IndividualContributionStatement{Individual Contribution Statement}
+
+
+\MultiobjectivecriteriaEngineeringStandards{Constraints and Engineering Standards Used in the Report} % If you need a label for this chapter
+
+
+
+
+% EDIT THE CONTENT OF THE FILE
+% Conclusions.tex
+% You can find it under the folder 
+% "chapters" on the left column
+
+% APPENDICES ARE OPTIONAL
+% COMMENT OUT BOTH LINES BELOW TO REMOVE THEM
+% ADD CHAPTERS TO ADD MULTIPLE APPENDICES
+\appendix 
+\input{AppendixA.tex}
+\input{AppendixB.tex} % Example second appendix (need to create the file in "chapters")
+
+
+\cleardoublepage % Do not change - required
+\RemoveLabels % Do not change - required
+\thesisspacing % Do not change - required
+\printbibliography[title={References},heading=bibintoc] % Do not change - required
+
+%=============    CV/Resume Section ==================
+%You can add as many CVs as the number of students. Comment the CVs that will not be used with the "%" sign like "%\ResumeTwo{Resume2}% If you need a label for this chapter." 
+
+
+\ResumeOne{Resume 1} % Add Resume of the 1st author
+\ResumeTwo{Resume 2} % Add Resume of the 2nd author if needed
+\ResumeThree{Resume 3} % Add Resume of the 3rd author if needed
+
+
+%permission might be required for teams with more than 5 students
+%\ResumeSix{Resume 6} % Add Resume of the 6th author if needed 
+%\ResumeSeven{Resume 7} % Add Resume of the 7th author if needed
+
+
+
+%\input{chapters/ChapterHowTO} % Since this section is given for help in your thesis, don't forget to disable this section via \% sign before finalizing your report 
+
+
+
+\end{document}

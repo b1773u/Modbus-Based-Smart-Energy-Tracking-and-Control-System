@@ -1,0 +1,77 @@
+% Write your Constraints and Enginering standards here
+
+\label{Multiobjectivecriteria_and_EngineeringStandards} % If you need a label for this chapter
+\thesisspacing % Do not change - required
+
+% Example text
+
+
+
+
+\section*{Constraints Used in the Report}
+
+Design criteria are specific requirements that must be met for a project to be considered successful. These criteria include factors such as functionality, cost, safety, sustainability and aesthetics. However, relying on just one criterion is not enough. Engineering projects often have to consider multiple conflicting priorities at the same time.
+The energy monitoring system developed aims to provide accurate measurements, be economical and have a structure suitable for future expansion.
+The main criteria considered in the project are given below:
+
+
+1. Functionality: Energy consumption must be monitored in real time and accurately.\\
+2. Economy: If the system is actually implemented, the selected PLC and sensors must be cost-effective.\\
+3. Sustainability: When the system is implemented, it must be designed to be suitable for future expansion with minimal hardware changes.
+
+These constraints directly affected many design decisions from the system's hardware selection to its general architecture, and since no real system design was made, factors such as cost were not taken into consideration.
+
+
+\section*{Engineering Standards Used in the Report}
+
+The engineering standards considered within the scope of the project are listed below:
+
+1. ISO 50001 Energy Management Systems: Used in determining energy efficiency targets and creating energy management strategies.\\
+2. IEC 61158 Industrial Communication Networks (Modbus Protocol): Provided standardization of communication between PLC and energy analyzers.\\
+3. IEC 61784 Functional Safety Fieldbuses: Contains general rules and profile definitions in the field of security in industrial communication networks, and also determines performance criteria for protocols such as Profibus, Modbus, Ethernet/IP.\\
+4. IEC 61850 Transmission Protocols: Defines protocols used for energy communication in SCADA systems.\\
+5. IEC 60870-5-104 Server | EMEA Technology - Codesys, Inovance, KEBA, Wago, Siemens, ABB, Schneider, Festo, Omron: It is a standard used for SCADA communication in energy systems.\\
+6. IEEE 1815 Power Systems Communications-Distributed Network Protocol (DNP3): It defines a communication protocol widely used for data collection and control in energy networks.\\
+7. IEC 61131-3 Programming Languages: It specifies programming standards for PLC devices and this programming is performed by compiling function blocks through objects.\\
+8. IEC 61499 Distributed Automation Standards: It specifies modeling and design rules for distributed control systems and PLC-based control systems.\\
+9.IEC 60034-2-1 Rotational Electrical Machines: Defines efficiency tests and efficiency measurement methods for low voltage AC motors.\\
+9.IEC 60034-2-1 Rotational Electrical Machines: Defines efficiency tests and efficiency measurement methods for low voltage AC motors.\\
+10.IEC 60034-30 Rotating electrical machines - Part 30: Efficiency classes of single-speed, three-phase, cage induction motors\\
+11.IEC 60034-30-1 Rotating electrical machines - Part 30-1:Efficiency classes of line operated AC motors\\
+12.NEMA MG1  – Motors and Generators Standard.\\
+13.Commission Regulation (EC) No 640/2009 of 22 July 2009 implementing Directive 2005/32/EC with regard to ecodesign requirements for electric motors
+These standards have increased the reliability, compatibility and long-term performance of the system.
+
+
+\clearpage
+\section*{STANDARDS AND CONSTRAINTS FORM}
+%Please answer the following questions.
+\begin{flushleft}
+1.	What is the design aspect of your project? Explain.\\
+This project focuses on the design of a simulation-based energy monitoring and control platform using Factory I/O, Modbus and TIA Portal. The system has an integrated structure with PLC by exchanging data via Modbus communication. This development work is done in a completely virtual environment without using any real hardware.\\
+2.	Briefly explain what the engineering problem that you have solved in your project and what is your solution on this problem.\\
+The problem of inefficient monitoring of energy consumption in industrial facilities has been addressed, and a Modbus-based system has been developed to ensure continuous monitoring, analysis and control of energy consumption.\\
+3.	Which knowledge you have learnt and which experiences you have gained throughout your university education, have you used when preparing your project?\\
+Information obtained from control systems, industrial automation, and PLC programming courses was used.\\
+4.	Which modern tools/software/programming languages and packages etc. did you use? Briefly explain for what purpose you used them.\\
+TIA Portal (Siemens) software was used for PLC programming, Factory IO and MATLAB/Simulink environment were used for simulation studies.\\
+5.	Do you have any certificate on any other disciplines/topics in addition to the department curriculum? (For example, using online platforms such as CUDA, Udemy, Coursera)\\
+6.	Which engineering standards have you used and taken into account? How did they impacted your design?\\
+The engineering standards used in this project increased the security and efficiency of the system in the simulation environment. ISO 50001, in determining the energy efficiency targets, and IEC 61158 Modbus provided standardization of communication with PLC in the Factory I/O platform. IEC 61784 provided secure data transmission of the system, and IEEE 1815 DNP3 increased data communication and efficiency. These standards strengthened the durability of the system in the simulation environment.\\
+7.	Which realistic limitations have you used or taken into account? Explain how they have impacted your design considering the following.
+\end{flushleft}
+\begin{description}
+  \item[a)] Economy: Since a real system design was not made, there is no direct limitation on the project budget. However, the tools and software used in the simulation environment were selected with low-cost solutions and budget optimization was achieved.
+  \item[b)] Environmental Issues: Energy efficiency has been increased and environmental impacts in the simulation environment have been reduced.
+  \item[c)] Sustainability: Adaptation to future expansions has been achieved with the modular system design.
+  \item[d)] Producibility: Applications such as TIA Portal facilitate system design in a simulation environment and provide solutions suitable for software and hardware integration that can be used in real systems, thus contributing to manufacturability.
+  \item[e)] Ethical Issues: Correct data recording and transparent reporting have been made.
+
+\end{description}
+%\medskip
+\begin{flushleft}
+\textbf{Project Team(Project Executive/Team Leader):} {\color{red}Kürşat Döşkaya}{\color{red}Kenan Selçuk}{\color{red}Burak Uğur}\\ 
+\textbf{Project Topic:} {\color{red}Modbus Based Smart Energy Monitoring and Control System} \\
+\textbf{Project Advisor:}  {\color{red}Dr. Onur Akbatı}\\
+\textbf{This project is approved by } {\color{red}Dr. Onur Akbatı} \\
+\end{flushleft}

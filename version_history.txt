@@ -1,0 +1,7 @@
+This file reports the changes between versions
+
+*v1. 22.02.2025
+- This is the first version of Template for ITU Control and Automation Engineering, Control and Automation Design I/II lectures
+
+*v2. 25/26.02.2025
+-Updated version via recommendations of academic staff of CAE department
