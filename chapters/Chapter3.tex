@@ -298,7 +298,124 @@ each parameter to be examined is connected to the outport port.
 
     Detailed descriptions of the engine model and the corresponding graphical results are presented in Appendix B.
 
-\section{dq Modeli} lÜç fazlı makine değişkenlerini (a-b-c) önce Clarke dönüşümü ile durağan $\alpha$–$\beta$ eksenlerine, ardından Park dönüşümü ile döner $d$–$q$ eksen takımına taşırız. $d$ ekseni rotor akısına paralel (\textit{akı bileşeni}), $q$ ekseni akıya dik (\textit{moment bileşeni}) olacak şekilde seçilirse akı ve moment birbirinden bağımsız kontrol edilebilir. Bu yapı asenkron motoru DC motor gibi kontrol etmeyi mümkün kılar \cite{macdonald1979dq,leonhard1996control}. dq modelinde motorun elektriksel dinamikleri, $d$ ve $q$ eksenlerine ait gerilim ve akım bileşenleri üzerinden ifade edilir. Bu eksen dönüşümü sayesinde, zamanla değişen üç fazlı sinyaller, sabit referans çerçevesinde iki bağımsız bileşen olarak kontrol edilir. Literatürde bu yöntem, \textit{Field Oriented Control} (FOC) gibi gelişmiş kontrol stratejilerinin temelini oluşturur \cite{blashke1972,sen1989}. Macdonald ve Sen'in \cite{macdonald1979dq} çalışmasında, dq modeli kullanılarak inverter–motor sisteminin kararlı çalışma noktaları belirlenmiş, akım kontrolü, kayma frekansı kontrolü ve akı kontrolü gibi stratejilerin kararlılık ve dinamik yanıt üzerindeki etkileri transfer fonksiyon analizi ile incelenmiştir. Elde edilen sonuçlar, akı ve momentin ayrık kontrolünün, sistemin hem düşük hem yüksek yük altında daha iyi performans gösterdiğini ortaya koymaktadır. \textbf{Standartlar ve Kısıtlar:} dq modelinin pratik uygulamalarında motor parametrelerinin doğru ölçülmesi kritik önemdedir. Bu ölçümler, IEC 60034-2-1 (verim ölçüm metotları), IEC 60034-4 (senkronizasyon metotları) ve IEC 60034-12 (başlatma metotları) gibi uluslararası standartlara uygun yapılmalıdır. Ayrıca, kayma frekansının aşırı yükselmesi akı zayıflamasına, düşük akım seviyelerinde ise belirli kontrol stratejilerinde kararlılık kaybına yol açabileceğinden kontrolcü tasarımında bu sınırlar dikkate alınmalıdır. \section{Clarke ve Park Dönüşümleri} Üç fazlı alternatif akım makinelerinin analizi ve kontrolünde, matematiksel ifadelerin basitleştirilmesi amacıyla \textbf{Clarke} ve \textbf{Park} dönüşümleri yaygın olarak kullanılmaktadır. Bu dönüşümler, motorun kontrol algoritmalarında zamanla değişen sinyallerin durağan veya döner referans sistemlerine aktarılmasını sağlar. Böylece, özellikle vektör kontrol (FOC) gibi yöntemlerde akı ve moment bileşenlerinin bağımsız kontrolü mümkün olur \cite{blashke1972,leonhard1996control}. \subsection{Clarke Dönüşümü (abc $\rightarrow$ $\alpha\beta0$)} Clarke dönüşümü, üç fazlı ($a$, $b$, $c$) dengeli sistemdeki akım veya gerilim bileşenlerini, durağan $\alpha$-$\beta$ eksen takımına ve sıfır bileşeni $i_0$’a dönüştürür. Bu sayede, üç fazlı sistem iki boyutlu Kartezyen koordinat sisteminde temsil edilir. $\alpha$ ekseni genellikle $a$ fazı ile aynı doğrultuda alınır, $\beta$ ekseni ise ona dik olarak tanımlanır. Dönüşüm matrisi aşağıda verilmiştir: \begin{equation} \begin{bmatrix} i_\alpha \\ i_\beta \\ i_0 \end{bmatrix} = \frac{2}{3} \begin{bmatrix} 1 & -\frac{1}{2} & -\frac{1}{2} \\ 0 & \frac{\sqrt{3}}{2} & -\frac{\sqrt{3}}{2} \\ \frac12 & \frac12 & \frac12 \end{bmatrix} \begin{bmatrix} i_a \\ i_b \\ i_c \end{bmatrix} \end{equation} Bu dönüşüm, IEC 60034 standardında tanımlı üç fazlı akım ölçümleri için uyumludur ve pratikte dijital kontrolörlerde hızlı hesaplama imkânı sunar. \subsection{Park Dönüşümü ($\alpha\beta$ $\rightarrow$ dq)} Park dönüşümü, Clarke dönüşümü ile elde edilen $\alpha$-$\beta$ durağan bileşenlerini, rotor akısına hizalanmış döner $d$-$q$ eksen takımına dönüştürür. Böylece, $d$ ekseni akı bileşenini, $q$ ekseni ise moment bileşenini temsil eder. $\theta$ açısı, rotor akı vektörünün $\alpha$ ekseni ile yaptığı açıdır ve genellikle enkoder, resolver veya sensörsüz gözlemciler ile belirlenir. \begin{equation} \begin{bmatrix} i_d \\ i_q \\ i_0 \end{bmatrix} = \frac{2}{3} \begin{bmatrix} \sin\theta & \sin\left(\theta-\frac{2\pi}{3}\right) & \sin\left(\theta+\frac{2\pi}{3}\right) \\ \cos\theta & \cos\left(\theta-\frac{2\pi}{3}\right) & \cos\left(\theta+\frac{2\pi}{3}\right) \\ \frac12 & \frac12 & \frac12 \end{bmatrix} \begin{bmatrix} i_a \\ i_b \\ i_c \end{bmatrix} \end{equation} Park dönüşümü, zamanla değişen sinyalleri sabit değerlere dönüştürdüğü için PI (Proportional–Integral) kontrolörlerin etkin şekilde çalışmasına olanak tanır. Bu, FOC algoritmalarında hassas tork ve akı kontrolü sağlamak için kritik öneme sahiptir. \textbf{Uygulama Notu:} Clarke ve Park dönüşümleri sayısal işlemcilerde (DSP, FPGA, mikrodenetleyici) gerçek zamanlı olarak hesaplanabilir. Ancak, $\theta$ açısının hatalı tahmini durumunda akı ve moment bileşenleri karışacağından kontrol performansı düşer. Bu nedenle, standartlara uygun hassas pozisyon/speed sensörleri veya yüksek doğruluklu sensörsüz tahmin yöntemleri kullanılmalıdır \cite{macdonald1979dq}. \section{3 Fazlı 4 kW 4 Kutuplu WEG Motor} Örnek motor: WEG W22 IE3, 4 kW, 4 kutup, 50 Hz \begin{itemize} \item Senkron hız: $1500$ d/dk \item Nominal hız: $\approx 1450$ d/dk \item Gerilim: 220–240/380–415 V ($\Delta$/Y) \item Koruma sınıfı: IP55 \item Soğutma: IC411-TEFC \end{itemize} \section{FOC (Field Oriented Control)} FOC, stator akımını akı ($d$) ve tork ($q$) bileşenlerine ayırıp, bu iki bileşeni PI akım çevrimleri ile referanslarında tutarak hızlı ve hassas moment/hız kontrolü sağlar. Temel fikir, rotor akı vektörünü $d$ eksenine sabitlemek ve $q$ eksenini moment üretimi için kullanmaktır. \section{Verimlilik Hesabı} Motor verimi: \begin{equation} \eta = \frac{P_{out}}{P_{in}} = \frac{T \cdot \omega}{P_{in}} \end{equation} \begin{itemize} \item \textbf{Doğrudan yöntem:} Giriş gücü (üç faz güç analizörü) ve çıkış gücü (torkmetre + devir) ölçülerek hesaplanır. \item \textbf{Dolaylı yöntem:} Bakır, demir, mekanik ve ek kayıplar ölçülerek toplam kayıp bulunur ve giriş gücünden düşülür. \end{itemize} Ölçüm ve raporlama IEC 60034-2-1 standardına uygun yapılmalıdır.
+\section{dq Modeli ve Clarke–Park Dönüşümleri}
+
+Üç fazlı elektrik makinelerinin analizi ve kontrolü, zamanla değişen üç fazlı ($a$-$b$-$c$) büyüklüklerin daha basit matematiksel modellerle ifade edilmesini gerektirir. Bu amaçla \textbf{Clarke} ve \textbf{Park} dönüşümleri kullanılır. Bu dönüşümler sayesinde, motorun $a$-$b$-$c$ sistemindeki karmaşık sinyalleri, durağan ($\alpha$–$\beta$) veya döner ($d$–$q$) referans sistemlerinde iki bağımsız bileşen ile temsil edilir. 
+
+FOC (\textit{Field Oriented Control}) gibi gelişmiş kontrol stratejilerinde bu yöntemler, akı ve moment bileşenlerinin bağımsız kontrolünü mümkün kılar \cite{blashke1972,leonhard1996control}. dq modelinde motorun elektriksel dinamikleri, $d$ ve $q$ eksenlerine ait gerilim, akım ve akı bileşenleri üzerinden ifade edilir. Bu yaklaşım, asenkron motorun DC motor gibi kontrol edilmesine olanak sağlar \cite{macdonald1979dq}.
+
+\subsection{Clarke Dönüşümü (abc $\rightarrow$ $\alpha\beta0$)}
+
+Clarke dönüşümü, üç fazlı ($a$, $b$, $c$) dengeli sistemdeki akım veya gerilim bileşenlerini, $\alpha$-$\beta$ durağan eksen takımına ve sıfır bileşeni ($i_0$)’a dönüştürür. $\alpha$ ekseni genellikle $a$ fazı ile aynı doğrultuda alınır, $\beta$ ekseni ise ona dik olarak tanımlanır.
+
+Dönüşüm matrisi:
+\begin{equation}
+\begin{bmatrix}
+i_\alpha \\
+i_\beta \\
+i_0
+\end{bmatrix}
+=
+\frac{2}{3}
+\begin{bmatrix}
+1 & -\frac{1}{2} & -\frac{1}{2} \\
+0 & \frac{\sqrt{3}}{2} & -\frac{\sqrt{3}}{2} \\
+\frac12 & \frac12 & \frac12
+\end{bmatrix}
+\begin{bmatrix}
+i_a \\
+i_b \\
+i_c
+\end{bmatrix}
+\end{equation}
+
+Burada:
+\begin{itemize}
+    \item $i_\alpha, i_\beta$: Durağan $\alpha$ ve $\beta$ eksenlerindeki bileşenler,
+    \item $i_0$: Sıfır bileşeni (nötr akımı),
+    \item $i_a, i_b, i_c$: Faz akımlarıdır.
+\end{itemize}
+
+Bu dönüşüm IEC 60034 standardında tanımlı üç fazlı ölçümler ile uyumludur ve sayısal kontrolörlerde (DSP, FPGA) gerçek zamanlı olarak hızlıca hesaplanabilir.
+
+\subsection{Park Dönüşümü ($\alpha\beta$ $\rightarrow$ dq)}
+
+Park dönüşümü, Clarke dönüşümü ile elde edilen $\alpha$-$\beta$ bileşenlerini, rotor akısına hizalanmış döner $d$-$q$ eksen takımına dönüştürür. $d$ ekseni akı bileşenini, $q$ ekseni ise moment bileşenini temsil eder.
+
+\begin{equation}
+\begin{bmatrix}
+i_d \\
+i_q \\
+i_0
+\end{bmatrix}
+=
+\begin{bmatrix}
+\cos\theta & \sin\theta & 0 \\
+-\sin\theta & \cos\theta & 0 \\
+0 & 0 & 1
+\end{bmatrix}
+\begin{bmatrix}
+i_\alpha \\
+i_\beta \\
+i_0
+\end{bmatrix}
+\end{equation}
+
+Burada $\theta$, rotor akı vektörünün $\alpha$ ekseni ile yaptığı açıdır ve şu yöntemlerle bulunabilir:
+\begin{itemize}
+    \item Enkoder veya resolver gibi pozisyon sensörleri,
+    \item Sensörsüz tahmin (MRAS, SMO, PLL tabanlı gözlemciler).
+\end{itemize}
+
+Bu dönüşüm sayesinde zamanla değişen AC sinyaller, sabit bileşenlere dönüşür ve PI kontrolörlerin etkin çalışması sağlanır. FOC algoritmalarında hassas tork ve akı kontrolü için kritiktir.
+
+\subsection{dq Modelinin Matematiksel Temeli}
+
+Bir asenkron motorun $dq$ eksenlerindeki gerilim denklemleri:
+\begin{align}
+v_d &= R_s i_d + \frac{d\psi_d}{dt} - \omega_e \psi_q \\
+v_q &= R_s i_q + \frac{d\psi_q}{dt} + \omega_e \psi_d
+\end{align}
+
+Burada:
+\begin{itemize}
+    \item $v_d, v_q$: $d$ ve $q$ eksenlerindeki gerilimler,
+    \item $i_d, i_q$: $d$ ve $q$ eksenlerindeki akımlar,
+    \item $\psi_d, \psi_q$: $d$ ve $q$ eksenlerindeki akı bileşenleri,
+    \item $R_s$: Stator direnci,
+    \item $\omega_e$: Elektriksel açısal hızdır.
+\end{itemize}
+
+Elektromanyetik tork ifadesi:
+\begin{equation}
+T_e = \frac{3}{2} \cdot \frac{P}{2} \cdot (\psi_d i_q - \psi_q i_d)
+\end{equation}
+
+Bu ifade, $d$ ekseninde akı, $q$ ekseninde moment üretileceğini açıkça gösterir. $\psi_q$’nun sıfırlandığı alan yönlendirme koşulunda ($\psi_q = 0$), tork yalnızca $i_q$ akımıyla kontrol edilir.
+
+\subsection{Standartlar ve Uygulama Notları}
+dq modelinin pratikte uygulanabilmesi için motor parametrelerinin doğru ölçülmesi gerekir. Başlıca standartlar:
+\begin{itemize}
+    \item IEC 60034-2-1: Verim ölçüm metotları,
+    \item IEC 60034-4: Senkron hız tespiti metotları,
+    \item IEC 60034-12: Başlatma yöntemleri.
+\end{itemize}
+
+\textbf{Uygulama Notu:} $\theta$ açısındaki hata, akı ve moment bileşenlerinin karışmasına ve kontrol performansının bozulmasına yol açar. Bu nedenle yüksek hassasiyetli sensörler veya gelişmiş sensörsüz tahmin yöntemleri kullanılmalıdır \cite{macdonald1979dq}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\linewidth]{dq_transformation_diagram.png}
+    \caption{abc $\rightarrow$ $\alpha\beta$ $\rightarrow$ dq dönüşüm adımları}
+    \label{fig:dq_transformation}
+\end{figure}
+
+
+\section{3 Fazlı 4 kW 4 Kutuplu WEG Motor} Örnek motor: WEG W22 IE3, 4 kW, 4 kutup, 50 Hz \begin{itemize} \item Senkron hız: $1500$ d/dk \item Nominal hız: $\approx 1450$ d/dk \item Gerilim: 220–240/380–415 V ($\Delta$/Y) \item Koruma sınıfı: IP55 \item Soğutma: IC411-TEFC \end{itemize} 
+
+\section{FOC (Field Oriented Control)} FOC, stator akımını akı ($d$) ve tork ($q$) bileşenlerine ayırıp, bu iki bileşeni PI akım çevrimleri ile referanslarında tutarak hızlı ve hassas moment/hız kontrolü sağlar. Temel fikir, rotor akı vektörünü $d$ eksenine sabitlemek ve $q$ eksenini moment üretimi için kullanmaktır. 
+
+\section{Verimlilik Hesabı} Motor verimi: \begin{equation} \eta = \frac{P_{out}}{P_{in}} = \frac{T \cdot \omega}{P_{in}} \end{equation} \begin{itemize} \item \textbf{Doğrudan yöntem:} Giriş gücü (üç faz güç analizörü) ve çıkış gücü (torkmetre + devir) ölçülerek hesaplanır. \item \textbf{Dolaylı yöntem:} Bakır, demir, mekanik ve ek kayıplar ölçülerek toplam kayıp bulunur ve giriş gücünden düşülür. \end{itemize} Ölçüm ve raporlama IEC 60034-2-1 standardına uygun yapılmalıdır.
  
 \medskip
 
