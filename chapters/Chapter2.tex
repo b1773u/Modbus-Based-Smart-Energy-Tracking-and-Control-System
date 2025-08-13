@@ -272,6 +272,101 @@ Each row of the efficiency calculation table contains the motor power and speed 
 
 The connection between this study and our study is that both studies share the common goal of increasing energy efficiency. While the aforementioned research aims to achieve savings through the selection and replacement of high-efficiency motors on the hardware side, our study aims to achieve energy management through real-time monitoring of operating modes and optimization using control algorithms in existing asynchronous motors. Thus, in addition to approaches requiring hardware modernization, similar levels of efficiency gains and short payback periods can be achieved through control and monitoring-based strategies.
 
+Kapsamlı bir literatür taramasının parçası olarak ele alınan “Design and Implementation of PLC-based Monitoring Control System for Induction Motor” başlıklı çalışma,elektrik tahrik sistemlerinde hareket kontrol teknolojilerinin gelişmesiyle birlikte, programlanabilir lojik kontrolörlerin (PLC) güç elektroniğiyle entegre kullanımının sanayi otomasyonunda sağladığı avantajları vurgulamaktadır. PLC’ler sayesinde motor kontrolü yüksek güç faktörü ile yapılabilir, üretim maliyetleri düşer ve sistem güvenilirliği artar. Literatürde DC makineler, step motorlar, relüktans motorlar ve lineer motorlar gibi çeşitli motor tiplerinin PLC ile kontrolüne yönelik çalışmalar bulunmakla birlikte, asenkron motorların PLC ile kontrolü üzerine yapılan yayınlar sınırlıdır. Bu makale, üç fazlı asenkron motor için PLC tabanlı izleme ve kontrol sisteminin tasarımını, donanım-yazılım entegrasyonunu ve test sonuçlarını sunmaktadır.
+PLC; mikroişlemci tabanlı, endüstriyel ortamlarda otomasyon süreçleri için tasarlanmış bir kontrol sistemidir. Giriş/çıkış modülleri aracılığıyla sensörlerden veri alır ve aktüatörlere komut gönderir. Çalışmada kullanılan PLC modüler yapıdadır: CPU, güç kaynağı, dijital giriş/çıkış modülleri, analog giriş/çıkış modülleri ve programlama terminalinden oluşur. Bu yapı, ileride çoklu motor sistemleri veya bilgisayar bağlantısı gibi genişletmeler için esnek bir çözüm sunar.\\
+\\
+Deneysel sistem (Şekil 2.7), üç farklı modda çalışacak şekilde tasarlanmıştır:\\
+    • Kapalı çevrim sabit hız kontrolü – hız ve yük akımı geri beslemeleri kullanılır, inverter çıkışı PLC tarafından kontrol edilir.\\
+    •Açık çevrim değişken hız kontrolü – PLC devre dışı bırakılır, inverter sabit kontrol modunda çalışır.\\
+    •Standart sabit gerilim–sabit frekans çalışması – kontrol sistemi tamamen devre dışı bırakılır.\\
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.4\columnwidth]{imgs/Electrical diagram of experimental system.png}
+    \caption[Short description for list of figures]{Electrical Diagram of Experimental System }
+    \label{fig-magnitude}
+    \end{figure}%
+
+Sistem, sarılı rotorlu asenkron motor (Tablo 2.6) ve değişken yük sağlayan DC jeneratörden oluşmaktadır. Üç fazlı güç kaynağı ana şalter, termik röle ve doğrultucu üzerinden IGBT tabanlı invertere bağlanmıştır. İnverter, DC gerilimi üç fazlı AC’ye dönüştürerek motorun statoruna uygular. PLC’ye bağlı hız sensörü (takogeneratör) ve akım sensörleri ile kapalı çevrim geri beslemeler sağlanmıştır. Kontrol panelinde anahtarlar, butonlar, sinyal lambaları ve seçiciler ile birlikte tüm modüller yer almaktadır.
+
+\begin{table}[h!]
+\centering
+\label{tab:induction_motor_specs}
+\begin{tabular}{|l|c|}
+\hline
+\textbf{Connection type} & $\Delta$/Y \\ \hline
+\textbf{Input voltage} & 380/660 V ac \\ \hline
+\textbf{Input current} & 1.5/0.9 A \\ \hline
+\textbf{Rated power} & 0.6 kW \\ \hline
+\textbf{Input frequency} & 50 Hz \\ \hline
+\textbf{Pole number} & 4 \\ \hline
+\textbf{Rated speed} & 1400 rpm \\ \hline
+\end{tabular}
+\caption{Induction Motor Technical Specifications}
+\end{table}
+
+\begin{table}[h!]
+\centering
+\label{tab:inverter_specs}
+\begin{tabular}{|l|l|}
+\hline
+\textbf{Output voltage} & 380, 460 V ac \\ \hline
+\textbf{Output frequency} & 0, 480 Hz \\ \hline
+\textbf{Output current} & 2.5 A \\ \hline
+\textbf{Output overload} & 150\% for 60 s \\ \hline
+\textbf{Power supply voltage} & 380, 460--10\% V ac \\ \hline
+\textbf{Input current} & 3 A \\ \hline
+\textbf{Dissipated power} & 46 W \\ \hline
+\end{tabular}
+\caption{Inverter Technical Specifications}
+\end{table}
+
+Aşırı akım rölesinin çıkışı, üç fazlı gerilimi doğru akıma çeviren bir **doğrultucu (rectifier)**ya bağlıdır. Elde edilen doğru akım, yalıtılmış kapılı bipolar transistör (IGBT) tabanlı bir invertere giriş olarak verilir. İlgili teknik özellikler Tablo 2.7’de özetlenmiştir. Bu inverter, DC gerilimi tekrar üç fazlı AC gerilime çevirerek motorun stator sargılarına uygular.
+
+Kontrolör, modüler tip bir PLC sistemi üzerine kurulmuştur. PLC donanımı şu temel modüllerden oluşmaktadır:\\
+Merkezi İşlem Birimi (CPU): Programı çalıştırır, veri işlemlerini ve giriş/çıkış kontrolünü yönetir.\\
+Dijital Çıkış Modülü (DOM) ve Dijital Giriş Modülü (DIM): Motorun çalıştırılması, durdurulması ve yön kontrolü gibi fonksiyonları sağlar.\\
+Analog Giriş Modülü (AIM): Hız ve yük akımı sensörlerinden gelen sinyalleri alır.\\
+Analog Çıkış Modülü (AOM): İnverterin kontrol sinyallerini üretir.
+Güç Kaynağı Ünitesi: PLC’nin tüm modüllerine gerekli DC beslemeyi sağlar.\\
+
+Sistem, iki geri besleme döngüsüne sahiptir:\\
+Hız geri beslemesi: Motorun miline bağlı bir takogeneratör (kalıcı mıknatıslı DC motor) ile sağlanır. Takogeneratör çıkış voltajı motor devrine orantılıdır ve AIM modülü tarafından okunur.\\
+Yük akımı geri beslemesi: Motor çıkışına bağlanan akım sensörü ile elde edilir.
+
+Manuel kontrol için sistemde; başlatma, durdurma, trip butonları; ileri/geri yön seçim anahtarı; hız seçici ve kazanç ayar anahtarı bulunmaktadır. Kontrol paneli üzerinde ayrıca; ana şalter, otomatik üç fazlı şalter, otomatik tek fazlı şalter, aşırı yük rölesi, yük şalteri, sinyal lambaları ve PLC modülleri yer almaktadır. Program, kişisel bilgisayardan PLC’ye RS232 seri arayüz üzerinden yüklenmektedir.
+
+PLC programı merdiven diyagramı (ladder diagram) yöntemi ile geliştirilmiş, RS232 üzerinden yüklenmiştir. Program; giriş sinyallerini izler, çıkışları kontrol eder ve hız–akım geri beslemelerine göre inverteri yönetir. PLC bellek yapısı giriş, çıkış ve veri bölgelerine ayrılmıştır. Kapalı çevrim kontrol algoritması ile yük değişimlerine rağmen hızın sabit tutulması sağlanmıştır.
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.4\columnwidth]{imgs/Flowchart of the main program..png}
+    \caption[Short description for list of figures]{Flowchart of the Main Program}
+    \label{fig-magnitude}
+    \end{figure}%
+
+Testler, PLC tabanlı kapalı çevrim kontrolün, geleneksel V/f kontrolüne göre daha yüksek hız doğruluğu sağladığını göstermektedir. Senkron hızın \%95’ine kadar verim korunmuş, değişken yük altında dahi hız sapmaları minimum seviyede kalmıştır. 
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.4\columnwidth]{imgs/Experimental speed–torque characteristics with PLC and inverter.png}
+    \caption[Short description for list of figures]{Experimental Speed–Torque Characteristics with PLC and Inverter}
+    \label{fig-magnitude}
+    \end{figure}%
+
+Şekil 7 (Deneysel hız-tork karakteristikleri): PLC ve inverter kontrolü altındaki motorun farklı referans hızlarda (600, 900, 1225, 1400 rpm) tork değişimine karşı hız tepkisini net şekilde gösteriyor. Bu, sistemin dinamik yük altında hız regülasyonu performansını karşılaştırmak için kritik.
+
+Bu makaledeki PLC tabanlı kontrol sistemi, yük değişimlerinde motor hızını sabit tutma başarısıyla öne çıkıyor. Deneysel sonuçlarda, özellikle yüksek hızlarda, PLC kontrolünün yalnızca invertere kıyasla hız düşüşünü önemli ölçüde azalttığı görülüyor. çalışmamızda ise asenkron motorun çalışma modunu gerçek zamanlı izleyip yük ve kayma değerlerine göre adaptif şekilde kontrol ederek gereksiz enerji kayıplarını minimize etme hedefi var. Bu iki yaklaşım temelde aynı prensibe dayanıyor: motorun hız ve tork davranışını hassas şekilde kontrol ederek hem performans hem de enerji verimliliğini artırmak.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.4\columnwidth]{imgs/Efficiency of controlled system with and without PLC per unit of efficiency of standard supplied motor..png}
+    \caption[Short description for list of figures]{Efficiency of Controlled System with and without PLC per unit of Efficiency of Standard Supplied Motor.}
+    \label{fig-magnitude}
+    \end{figure}%
+
+PLC kontrollü ve yalnızca inverter kontrollü sistemlerde verimliliğin torka bağlı değişimini sunuyor. Enerji yönetimi ve verimlilik optimizasyonu açısından doğrudan kıyaslama imkânı veriyor.
+
 \section{Gaps and Limitations}
 
 Literature reviews show that significant progress has been made in both Modbus-based energy monitoring systems and studies aimed at improving energy efficiency in asynchronous motors. However, when previous studies are examined, some common shortcomings are apparent. Firstly, Modbus-based energy monitoring applications are mostly limited to measurement, data collection, and visualization; there is insufficient focus on analyzing the collected data in real time and integrating it into motor control algorithms, i.e., transforming it into a closed-loop structure that directly provides energy optimization. This situation limits the potential energy savings capacity of the systems. On the other hand, most studies on asynchronous motor efficiency focus on hardware-based improvements (high-efficiency motor selection, motor replacement, mechanical improvements, etc.); methods for achieving energy savings without hardware changes in the existing motor fleet, using only software-based control strategies, are addressed in a limited number of cases.Furthermore, many of these studies did not take into account different load profiles, variable operating conditions, and industrial driving cycles; optimization was generally tested under constant load or laboratory conditions. Another limitation is that secondary loss components such as thermal effects, harmonic distortion (THD), and voltage imbalances are not integrated into energy management algorithms in motor efficiency analyses. In field studies focused on high-efficiency motor use, while payback periods and cost analyses are presented in detail, an integrated analysis directly comparing these scenarios with control-based software solutions is lacking. Therefore, while the existing literature provides significant knowledge on energy monitoring and motor efficiency, there is a need for comprehensive studies that combine real-time monitoring data with control algorithms, adaptively respond to different load and environmental conditions, and comprehensively compare both hardware and software-based solutions.
