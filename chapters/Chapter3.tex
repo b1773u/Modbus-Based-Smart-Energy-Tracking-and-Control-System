@@ -410,6 +410,21 @@ dq modelinin pratikte uygulanabilmesi için motor parametrelerinin doğru ölç�
     \label{fig:dq_transformation}
 \end{figure}
 
+Toplam güç, \textit{abc} değişkenleri cinsinden aşağıdaki gibi ifade edilir \cite{krause2013analysis}:
+
+\begin{equation}
+    P_{abc,s} = v_{as} i_{as} + v_{bs} i_{bs} + v_{cs} i_{cs}
+\end{equation}
+
+\textit{qd0} değişkenleri cinsinden ifade edilen toplam güç, \textit{abc} değişkenleri cinsinden ifade edilen toplam güce eşittir. Buna göre:
+
+\begin{equation}
+    P_{qd0,s} = P_{abc,s} = \frac{3}{2} \left( v_{qs} i_{qs} + v_{ds} i_{ds} + 2 v_{0,s} i_{0,s} \right)
+\end{equation}
+
+Buradaki $\frac{3}{2}$ katsayısı, dönüşümde kullanılan sabit seçimine bağlı olarak ortaya çıkmaktadır. \textit{qs} ve \textit{ds} eksenlerindeki gerilim, akım, manyetik akı bağları ve elektrik yükleri, referans çerçevesinin açısal hızına bağlı olmasına rağmen toplam gücün dalga şekli referans çerçevesinden bağımsızdır.
+
+
 
 \section{3 Fazlı 4 kW 4 Kutuplu WEG Motor} Örnek motor: WEG W22 IE3, 4 kW, 4 kutup, 50 Hz \begin{itemize} \item Senkron hız: $1500$ d/dk \item Nominal hız: $\approx 1450$ d/dk \item Gerilim: 220–240/380–415 V ($\Delta$/Y) \item Koruma sınıfı: IP55 \item Soğutma: IC411-TEFC \end{itemize} 
 
